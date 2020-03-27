@@ -28,7 +28,7 @@ class AddFunction extends Command
 
     protected function calculate() {
         $number = $this->getInput();
-        if(count($number) > 0) {
+        if(count($number) > 0 and $this->numericalCheck($number)===true) {
             $description       = $this->generateCommand($number);
             $resultCalculation = $this->calculateAll($number);
             $finalResult = strval($description)." = ".strval($resultCalculation);
@@ -70,5 +70,14 @@ class AddFunction extends Command
     protected function getCommandVerb(): string
     {
         return 'Add';
+    }
+    protected function numericalCheck(array $numbers)
+    {
+        foreach ($numbers as $value) {
+            if(!is_numeric($value)){
+				return false;
+            }
+        }
+		return true;
     }
 }
