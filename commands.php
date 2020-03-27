@@ -6,5 +6,6 @@ return [
     Jakmall\Recruitment\Calculator\Commands\SubtractFunction::class,
     Jakmall\Recruitment\Calculator\Commands\MultiplyFunction::class,
     Jakmall\Recruitment\Calculator\Commands\DivideFunction::class,
+    Jakmall\Recruitment\Calculator\Commands\PowerFunction::class,
 
 ];
