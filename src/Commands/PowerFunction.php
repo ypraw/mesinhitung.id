@@ -26,12 +26,13 @@ class PowerFunction extends Command
         echo $result. "\n";
     }
 
-    protected function calculate() {
+    protected function calculate()
+    {
         $base=$this->getBaseNumber();
         $exp=$this->getExponentNumber();
-        if($this->numericalCheck($base)===true and $this->numericalCheck($exp)===true) {
-            $description       = $this->generateCommand($base,$exp);
-            $resultCalculation = $this->calculateAll($base,$exp);
+        if ($this->numericalCheck($base)===true and $this->numericalCheck($exp)===true) {
+            $description       = $this->generateCommand($base, $exp);
+            $resultCalculation = $this->calculateAll($base, $exp);
             $finalResult = strval($description)." = ".strval($resultCalculation);
         } else {
             $this->info("your input doesn't contains numerical");
@@ -55,7 +56,7 @@ class PowerFunction extends Command
         return '^';
     }
 
-    protected function generateCommand($base,$exp)
+    protected function generateCommand($base, $exp)
     {
         return ($base. ' ^ '. $exp);
     }
@@ -65,9 +66,9 @@ class PowerFunction extends Command
      *
      * @return float|int
      */
-    protected function calculateAll($base,$exp)
+    protected function calculateAll($base, $exp)
     {
-        $result=pow($base,$exp);
+        $result=pow($base, $exp);
         return $result;
     }
 
@@ -78,10 +79,9 @@ class PowerFunction extends Command
 
     protected function numericalCheck($number)
     {
-        if(!is_numeric($number))
-        {
-		    return false;
+        if (!is_numeric($number)) {
+            return false;
         }
-		return true;
+        return true;
     }
 }
