@@ -8,7 +8,7 @@ class PowerFunction extends Command
     /**
      * @var string
      */
-    protected $signature = 'pow {base : The base number} {exp : The exponent number}';
+    protected $signature = 'pow {base : The base number} {exp* : The exponent number}';
     /**
      * @var string
      */
@@ -30,12 +30,15 @@ class PowerFunction extends Command
     {
         $base=$this->getBaseNumber();
         $exp=$this->getExponentNumber();
-        if ($this->numericalCheck($base)===true and $this->numericalCheck($exp)===true) {
-            $description       = $this->generateCommand($base, $exp);
-            $resultCalculation = $this->calculateAll($base, $exp);
+        // var_dump($base);
+        if (count($exp)==1 and $this->numericalCheck($base)===true and $this->numericalCheck($exp[0])===true) {
+            $description       = $this->generateCommand($base, $exp[0]);
+            $resultCalculation = $this->calculateAll($base, $exp[0]);
             $finalResult = strval($description)." = ".strval($resultCalculation);
+        } elseif (count($exp)>1) {
+            $this->error('Something went wrong!, your exponent number too much:(');
         } else {
-            $this->info("your input doesn't contains numerical");
+            $this->error("your input doesn't contains numerical");
             exit;
         }
         return $finalResult;
@@ -45,6 +48,8 @@ class PowerFunction extends Command
     {
         return $this->argument('base');
     }
+
+
 
     protected function getExponentNumber()
     {
