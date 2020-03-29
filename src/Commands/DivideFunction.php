@@ -45,11 +45,6 @@ class DivideFunction extends Command
         return $this->argument('numbers');
     }
 
-    protected function getOperator(): string
-    {
-        return '/';
-    }
-
     protected function generateCommand($arrayNumber)
     {
         return implode(' / ', $arrayNumber);
@@ -71,11 +66,6 @@ class DivideFunction extends Command
             }, $initial);
         }
         return $result;
-    }
-
-    protected function getCommandVerb(): string
-    {
-        return 'divide';
     }
 
     protected function numericalCheck(array $numbers)
