@@ -26,9 +26,10 @@ class SubtractFunction extends Command
         echo $result. "\n";
     }
 
-    protected function calculate() {
+    protected function calculate()
+    {
         $number = $this->getInput();
-        if(count($number) > 0 and $this->numericalCheck($number)===true) {
+        if (count($number) > 0 and $this->numericalCheck($number)===true) {
             $description       = $this->generateCommand($number);
             $resultCalculation = $this->calculateAll($number);
             $finalResult = strval($description)." = ".strval($resultCalculation);
@@ -44,11 +45,6 @@ class SubtractFunction extends Command
         return $this->argument('numbers');
     }
 
-    protected function getOperator(): string
-    {
-        return '-';
-    }
-
     protected function generateCommand($arrayNumber)
     {
         return implode(' - ', $arrayNumber);
@@ -62,24 +58,21 @@ class SubtractFunction extends Command
     protected function calculateAll(array $numbers)
     {
         $result = reset($numbers);
-        if(count($numbers) > 0) {
-            foreach (array_slice($numbers,1) as $data){
+        if (count($numbers) > 0) {
+            foreach (array_slice($numbers, 1) as $data) {
                 $result-= $data;
             }
         }
         return $result;
     }
-    protected function getCommandVerb(): string
-    {
-        return 'Subtract';
-    }
-     protected function numericalCheck(array $numbers)
+
+    protected function numericalCheck(array $numbers)
     {
         foreach ($numbers as $value) {
-            if(!is_numeric($value)){
-				return false;
+            if (!is_numeric($value)) {
+                return false;
             }
         }
-		return true;
+        return true;
     }
 }
