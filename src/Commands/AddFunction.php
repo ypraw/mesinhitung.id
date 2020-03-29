@@ -45,11 +45,6 @@ class AddFunction extends Command
         return $this->argument('numbers');
     }
 
-    protected function getOperator(): string
-    {
-        return '+';
-    }
-
     protected function generateCommand($arrayNumber)
     {
         return implode(' + ', $arrayNumber);
@@ -68,10 +63,7 @@ class AddFunction extends Command
         }
         return $result;
     }
-    protected function getCommandVerb(): string
-    {
-        return 'Add';
-    }
+
     protected function numericalCheck(array $numbers)
     {
         foreach ($numbers as $value) {
