@@ -26,9 +26,10 @@ class MultiplyFunction extends Command
         echo $result. "\n";
     }
 
-    protected function calculate() {
+    protected function calculate()
+    {
         $number = $this->getInput();
-        if(count($number) > 0 and $this->numericalCheck($number)===true) {
+        if (count($number) > 0 and $this->numericalCheck($number)===true) {
             $description       = $this->generateCommand($number);
             $resultCalculation = $this->calculateAll($number);
             $finalResult = strval($description)." = ".strval($resultCalculation);
@@ -44,11 +45,6 @@ class MultiplyFunction extends Command
         return $this->argument('numbers');
     }
 
-    protected function getOperator(): string
-    {
-        return '*';
-    }
-
     protected function generateCommand($arrayNumber)
     {
         return implode(' * ', $arrayNumber);
@@ -62,24 +58,19 @@ class MultiplyFunction extends Command
     protected function calculateAll(array $numbers)
     {
         $result = null;
-        if(count($numbers) > 0) {
+        if (count($numbers) > 0) {
             $result = array_product($numbers);
         }
         return $result;
     }
 
-    protected function getCommandVerb(): string
-    {
-        return 'Add';
-    }
-
     protected function numericalCheck(array $numbers)
     {
         foreach ($numbers as $value) {
-            if(!is_numeric($value)){
-				return false;
+            if (!is_numeric($value)) {
+                return false;
             }
         }
-		return true;
+        return true;
     }
 }
