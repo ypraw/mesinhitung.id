@@ -45,11 +45,6 @@ class MultiplyFunction extends Command
         return $this->argument('numbers');
     }
 
-    protected function getOperator(): string
-    {
-        return '*';
-    }
-
     protected function generateCommand($arrayNumber)
     {
         return implode(' * ', $arrayNumber);
@@ -67,11 +62,6 @@ class MultiplyFunction extends Command
             $result = array_product($numbers);
         }
         return $result;
-    }
-
-    protected function getCommandVerb(): string
-    {
-        return 'Add';
     }
 
     protected function numericalCheck(array $numbers)
